@@ -9,7 +9,8 @@ class Entity extends CI_Model {
     public function __set($key, $value) {
         $method = 'set' . str_replace(' ', '', ucwords(str_replace(['-', '_'], ' ', $key)));
 
-        if (method_exists($this, $method)) {
+        if (method_exists($this, $method))
+        {
             $this->$method($value);
 
             return $this;
@@ -21,4 +22,7 @@ class Entity extends CI_Model {
         return $this;
     }
 
+    public function __get($key) {
+        return $this->$key;
+    }
 }
